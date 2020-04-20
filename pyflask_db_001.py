@@ -43,7 +43,10 @@ def giaiptb1():
         str = "VSN"
     elif a != 0:
         str = "nghiem x=" +(-b/a)
+    eslse: 
+        str = "Ko co nghiem"
     return str
+    
 class Parameters(Resource):
     def get(self, firstParam):
         return "Day la tam so " + firstParam
