@@ -28,7 +28,22 @@ def  profile():
 def api_filter():
     query_parameters = request.args
     return jsonify(query_parameters)
+@app.route('/giaiptb1', methods=['GET'])
+def giaiptb1():
+    query_parameters = request.args
+    a = query_parameters.get("a")
+    b = query_parameters.get("b")
 
+    a = int(a)
+    b = int(b)
+
+    str = "khong co nghiem"
+
+    if a == 0 and b == 0:
+        str = "VSN"
+    elif a != 0:
+        str = "nghiem x=" +(-b/a)
+    return str
 class Parameters(Resource):
     def get(self, firstParam):
         return "Day la tam so " + firstParam
