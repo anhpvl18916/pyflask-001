@@ -7,7 +7,7 @@ from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from json import dumps
 from flask import jsonify
-
+import math
 
 app = Flask(__name__)
 #db_connect = create_engine('sqlite:///dsNhanVien.db')
@@ -66,18 +66,33 @@ def giaiptb2():
     str = "khong co nghiem"
     
     kq = { "tt" : str }
-    
-    if a == 0 and b == 0:
-        str = "VSN"
-        kq = { "tt" : str }
-    elif a != 0:
-        x =  -b/a
-        str = "co 1 nghiem"
-        kq = { "tt" : str , "x" : x}
+   
+    if(a==0):
+        if(b==0):
+            if(c==0):
+                str = "Vo So NG"
+                kq = { "tt" : str }
+            else:
+                str = "VN"
+                kq = { "tt" : str }
+        elif(c!=0):
+            x = (-c)/b
+            str = "co 1 nghiem"
+            kq = { "tt" : str, "x" : x }
     else:
-        str = "KoCoN"
-        kq = { "tt" : str }
-    
+        Delta = (b*b - 4*a*c)
+        if(Delta <0):
+            str = "VN"
+            kq = { "tt" : str }
+        elif(Delta ==0):
+            x = (-b)/(2*a)
+            str = "co nghiem kep"
+            kq = { "tt" : str, "x" : x }
+        elif(Delta >0):
+            x =(-b + math.sqrt(Delta))/(2*a) 
+            y =(-b - math.sqrt(Delta))/(2*a) 
+            str = "co 2 nghiem"
+            kq = { "tt" : str, "x1" : x, "x2":y}
     return jsonify(kq)
 @app.route('/loaiTamGiac', methods=['GET'])
 def loaiTamGiac():
@@ -90,24 +105,24 @@ def loaiTamGiac():
     b = int(b)
     c = int(c)
 
-    str = "Đây là Tam giác"
+    str = "Day là Tam giac"
     
     kq = { "tt" : str }
     if (a+b)>c and (a+c)>b and (b+c)>a:
         if a==b or b==c or a==c :
-            str = "Đây là Tam giác CÂN"
+            str = "Day la Tam giac CAN"
             kq = { "tt" : str }
             if a==b==c :
-                str = "Đây là Tam giác ĐỀU"
+                str = "Day là Tam giac DEU"
                 kq = { "tt" : str }
         elif a*a == (b*b + c*c) or b*b==(a*a+c*c) or c*c ==(a*a+b*b):
-            str ="Đây là Tam giác VUÔNG"
+            str ="Day là Tam giac VUONG"
             kq = { "tt" : str }
         else :
-            str = "Đây là Tam giác THƯỜNG"
+            str = "Day là Tam giac THUONG"
             kq = { "tt" : str }
       else:
-        str ="Đây là không phải là Tam giác"
+        str ="Day la khong phai la Tam giac"
         kq = { "tt" : str }
       return jsonify(kq)
 
