@@ -52,6 +52,7 @@ def giaiptb1():
         str = "KoCoN"
         kq = { "tt" : str }
     return jsonify(kq)
+@app.route('/giaiptb2', methods=['GET'])
 def giaiptb2():
     query_parameters = request.args
     a = query_parameters.get("a")
@@ -78,6 +79,7 @@ def giaiptb2():
         kq = { "tt" : str }
     
     return jsonify(kq)
+@app.route('/loaiTamGiac', methods=['GET'])
 def loaiTamGiac():
     query_parameters = request.args
     a = query_parameters.get("a")
@@ -91,14 +93,14 @@ def loaiTamGiac():
     str = "Đây là Tam giác"
     
     kq = { "tt" : str }
-    if(a+b>c and a+c>b and b+c>a):
-        if(a==b or b==c or a==c):
+    if (a+b)>c and (a+c)>b and (b+c)>a:
+        if a==b or b==c or a==c :
             str = "Đây là Tam giác CÂN"
             kq = { "tt" : str }
-            if(a==b==c):
+            if a==b==c :
                 str = "Đây là Tam giác ĐỀU"
                 kq = { "tt" : str }
-        elif(a*a == (b*b + c*c) or b*b==(a*a+c*c) or c*c ==(a*a+b*b)):
+        elif a*a == (b*b + c*c) or b*b==(a*a+c*c) or c*c ==(a*a+b*b):
             str ="Đây là Tam giác VUÔNG"
             kq = { "tt" : str }
         else :
@@ -108,6 +110,7 @@ def loaiTamGiac():
         str ="Đây là không phải là Tam giác"
         kq = { "tt" : str }
       return jsonify(kq)
+
 class Parameters(Resource):
     def get(self, firstParam):
         return "Day la tam so " + firstParam
