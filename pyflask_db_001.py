@@ -52,7 +52,32 @@ def giaiptb1():
         str = "KoCoN"
         kq = { "tt" : str }
     return jsonify(kq)
+def giaiptb2():
+    query_parameters = request.args
+    a = query_parameters.get("a")
+    b = query_parameters.get("b")
+    c = query_parameters.get("c")
+
+    a = int(a)
+    b = int(b)
+    C = int(c)
+
+    str = "khong co nghiem"
     
+    kq = { "tt" : str }
+    
+    if a == 0 and b == 0:
+        str = "VSN"
+        kq = { "tt" : str }
+    elif a != 0:
+        x =  -b/a
+        str = "co 1 nghiem"
+        kq = { "tt" : str , "x" : x}
+    else:
+        str = "KoCoN"
+        kq = { "tt" : str }
+    
+    return jsonify(kq)
 class Parameters(Resource):
     def get(self, firstParam):
         return "Day la tam so " + firstParam
