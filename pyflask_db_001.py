@@ -105,7 +105,7 @@ def loaiTamGiac():
     b = int(b)
     c = int(c)
 
-    str = "Day là Tam giac"
+    str = "Day la Tam giac"
     
     kq = { "tt" : str }
     if (a+b)>c and (a+c)>b and (b+c)>a:
@@ -113,13 +113,13 @@ def loaiTamGiac():
             str = "Day la Tam giac CAN"
             kq = { "tt" : str }
             if a==b==c :
-                str = "Day là Tam giac DEU"
+                str = "Day la Tam giac DEU"
                 kq = { "tt" : str }
         elif a*a == (b*b + c*c) or b*b==(a*a+c*c) or c*c ==(a*a+b*b):
-            str ="Day là Tam giac VUONG"
+            str ="Day la Tam giac VUONG"
             kq = { "tt" : str }
         else :
-            str = "Day là Tam giac THUONG"
+            str = "Day la Tam giac THUONG"
             kq = { "tt" : str }
     else:
         str ="Day la khong phai la Tam giac"
