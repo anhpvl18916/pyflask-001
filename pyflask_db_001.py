@@ -18,6 +18,9 @@ def  index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def  login():
+    query_parameters = request.args
+    vusername = query_parameters.get("username")
+    Vpasswork = query_parameters.get("passwork")
     return render_template("login.html")
 
 @app.route('/profile')
